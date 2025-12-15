@@ -13,6 +13,6 @@ jobs:
     steps:
       - name: Call Jenkins API
         run: |
-          curl -X POST "https://https://smee.io/tMCPpHgcyuqMQZ9Z/job/check-user/buildWithParameters" \
+          curl -X POST "https://smee.io/tMCPpHgcyuqMQZ9Z/job/check-user/buildWithParameters" \
           --user "jenkins_user:11fd9d25ce0703231318fd51ece6c8c33c" \
           --data "USERNAME=${{ github.event.inputs.username }}"
