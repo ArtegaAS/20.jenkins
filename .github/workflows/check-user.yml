@@ -11,14 +11,16 @@ jobs:
   commit-username:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # даём право на push в репозиторий
+      contents: write   # разрешаем запись в репозиторий через GITHUB_TOKEN
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}   # используем встроенный токен
 
       - name: Commit with username in message
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git commit --allow-empty -m "check-user: ${{ github.event.inputs.username }}"
-          git push
+          git push origin HEAD:main
